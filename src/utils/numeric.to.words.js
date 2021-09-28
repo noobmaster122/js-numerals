@@ -5,7 +5,7 @@ const multipleOf10= ['', '', 'twenty', 'thirty', 'fourthy', 'fifty', 'sixty', 's
 const unitKeywordGetter = (z) => {
     switch(z){
         case 2:
-            return 'hundread';
+            return 'hundread and';
         case 6:
             return 'million';
         case 3:
@@ -54,7 +54,7 @@ export const breakDown = (n) => {
         // if one of the values is 0 , dont show the dash
         let nrl = n.substring(0, len-1);
         let nrr = n.substring(len-1, len);
-        return `${( nrl == 0 && nrr == 0 ) ? '' : 'and'} ${rl}${( nrl != 0 && nrr != 0 ) ? '-' : ''}${rr}`;
+        return `${rl}${( nrl != 0 && nrr != 0 ) ? '-' : ''}${rr}`;
     }else{
         // reject numbers above 12 digits, because i dont know how to call them
         if(len > 12) return 'i cant convert numbers above 100 trillion';
