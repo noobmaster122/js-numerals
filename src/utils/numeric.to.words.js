@@ -16,7 +16,7 @@ const unitKeywordGetter = (z) => {
 }
 // number units, and their digit break point
 const units=[2,3,6,9];
- 
+
  const closestUnitGetter = (len) => {
      // if string length is 4 split into two parts
      if(len === 4) return 0;
@@ -54,7 +54,7 @@ export const breakDown = (n) => {
         // if one of the values is 0 , dont show the dash
         let nrl = n.substring(0, len-1);
         let nrr = n.substring(len-1, len);
-        return `${rl}${( nrl != 0 && nrr != 0 ) ? '-' : ''}${rr}`;
+        return `${( nrl == 0 && nrr == 0 ) ? '' : 'and'} ${rl}${( nrl != 0 && nrr != 0 ) ? '-' : ''}${rr}`;
     }else{
         // reject numbers above 12 digits, because i dont know how to call them
         if(len > 12) return 'i cant convert numbers above 100 trillion';
