@@ -55,6 +55,21 @@ export const breakDown = (n) => {
         let nrl = n.substring(0, len-1);
         let nrr = n.substring(len-1, len);
         return `${rl}${( nrl != 0 && nrr != 0 ) ? '-' : ''}${rr}`;
+    }else{
+        // reject numbers above 12 digits, because i dont know how to call them
+        if(len > 12) return 'i cant convert numbers above 100 trillion';
+        // this is the largest unit available.
+        let UnitMargin = units[closestUnitGetter(len)]
+        let nrl = n.substring(0, len-UnitMargin);
+        let unitkeyword;
+        // handle special cases, 20xx and 10xx
+        if(len === 4 && ( n.substring(0, len-UnitMargin) === '10' || n.substring(0, len-UnitMargin) === '20')){
+            unitkeyword =  nrl != 0 ? `${unitKeywordGetter(3)}` : '';
+            return `${breakDown(n.substring(0, len-3))} ${unitkeyword} ${breakDown(n.substring(len-3, len))} `;
+        }else{
+            unitkeyword = nrl != 0  ? `${unitKeywordGetter(UnitMargin)}` : '';
+            return `${breakDown(n.substring(0, len-UnitMargin))} ${unitkeyword} ${breakDown(n.substring(len-UnitMargin, len))} `;
+        }
     }
 }
 
