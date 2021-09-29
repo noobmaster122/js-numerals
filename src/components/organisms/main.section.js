@@ -29,7 +29,23 @@ export const PuzzleSection = () => {
         if(!!!noLeadingZero(numericValue)) return setStringValue("cant accept value with leading zeros");
         if(!!!isNumber(numericValue)) return setStringValue("enter whole numbers only !");
         if(!!isNumber(numericValue) && numericValue == 0) return setStringValue("zero");
-        if(!!isNumber(numericValue) && !!numericValue) return setStringValue(breakDown(numericValue));
+        if(!!isNumber(numericValue) && !!numericValue){
+            let x = breakDown(numericValue);
+            // filter out empty strings (what would have been a zero*)
+            let res = breakDown(numericValue).split(' ').filter(word => word.length > 1);
+            //filter out leading and keyword
+            if(res[0] == 'and'){
+                res = res.slice(1, res.length).join(' '); 
+                return setStringValue(res);
+            }        
+            // filter out tailing and keyword    
+            if(res[res.length - 1] == 'and'){
+                res = res.slice(0, -1).join(' '); 
+                return setStringValue(res);
+            }
+            // write into state
+            return setStringValue(x);
+        }
     }
 
     return(
