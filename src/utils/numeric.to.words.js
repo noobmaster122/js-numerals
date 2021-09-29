@@ -55,6 +55,7 @@ export const breakDown = (n) => {
         let nrl = n.substring(0, len-1);
         let nrr = n.substring(len-1, len);
         return `${rl}${( nrl != 0 && nrr != 0 ) ? '-' : 'and '}${rr}`;
+        
     }else{
         // reject numbers above 12 digits, because i dont know how to call them
         if(len > 12) return 'i cant convert numbers above 100 trillion';
