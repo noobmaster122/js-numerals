@@ -24,11 +24,11 @@ export const PuzzleSection = () => {
     }
 
     const clickHandler = () => {
-       
+        
+        if(!!isNumber(numericValue) && numericValue == 0) return setStringValue("zero");
         if(!!!numericValue) return setStringValue("must enter a number !")
         if(!!!noLeadingZero(numericValue)) return setStringValue("cant accept value with leading zeros");
         if(!!!isNumber(numericValue)) return setStringValue("enter whole numbers only !");
-        if(!!isNumber(numericValue) && numericValue == 0) return setStringValue("zero");
         if(!!isNumber(numericValue) && !!numericValue){
             let x = breakDown(numericValue);
             // filter out empty strings (what would have been a zero*)
