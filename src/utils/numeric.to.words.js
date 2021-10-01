@@ -45,7 +45,7 @@ export const breakDown = (n) => {
         return digits[n];
     }else if(len === 2){
         // if number is of two digits but falls in the interval, return hard coded value
-        if(10 <= n && n <= 19) return `and ${digits[n]}`;
+        if(10 <= n && n <= 19) return ` and ${digits[n]}`;
         // string value of right side of the inputed number
         let rr = rightSideGetter(digits, n, len, 1)
         // string value of left side of inputed number
@@ -54,7 +54,7 @@ export const breakDown = (n) => {
         // if one of the values is 0 , dont show the dash
         let nrl = n.substring(0, len-1);
         let nrr = n.substring(len-1, len);
-        return `${rl}${( nrl != 0 && nrr != 0 ) ? '-' : 'and '}${rr}`;
+        return `${rl}${( nrl != 0 && nrr != 0 ) ? '-' : ' and '}${rr}`;
         
     }else{
         // reject numbers above 12 digits, because i dont know how to call them

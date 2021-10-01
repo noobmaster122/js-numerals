@@ -24,7 +24,7 @@ export const PuzzleSection = () => {
     }
 
     const clickHandler = () => {
-        
+
         if(!!isNumber(numericValue) && numericValue == 0) return setStringValue("zero");
         if(!!!numericValue) return setStringValue("must enter a number !")
         if(!!!noLeadingZero(numericValue)) return setStringValue("cant accept value with leading zeros");
